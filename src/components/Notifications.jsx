@@ -43,9 +43,6 @@ function Notifications() {
     }
   };
 
-  const handleRefresh = () => {
-    window.location.href = window.location.href;
-  };
   ///////////////////////////////////////////css
   const buttonStyles = {
     height: "50px",
@@ -127,6 +124,7 @@ function Notifications() {
                       {notification.createdAt}
                     </small>
                     <Badge
+                      // eslint-disable-next-line no-extra-boolean-cast
                       bg={!!notification.read ? "" : "primary"}
                       className="p-2 rounded-circle mx-4"
                       style={{

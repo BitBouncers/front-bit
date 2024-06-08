@@ -19,7 +19,7 @@ export default function ImageView() {
   const [showOpinions, setShowOpinions] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [newNote, setNewNote] = useState(
-    state.image.authors.find((author) => author.uid === user.uid)?.note || ""
+    state.image.authors.find((author) => author.uid === user.uid)?.note || "",
   );
 
   //This code makes use states for rating popup
@@ -54,7 +54,7 @@ export default function ImageView() {
         if (data.errors && data.errors.length > 0) {
           alert(data.errors[0].msg);
         } else {
-          alert(data.msg);
+          alert(data.msg || data.error);
         }
       })
       .catch((error) => {
@@ -125,7 +125,7 @@ export default function ImageView() {
 
           // Check if a matching author was found
           const matchingAuthor = newAuthors.find(
-            (author) => author.uid === user.uid
+            (author) => author.uid === user.uid,
           );
 
           // If no matching author was found, add the new object to the array

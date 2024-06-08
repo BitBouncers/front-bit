@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { firebaseAuth } from "../auth.js";
 import { API_URL } from "../constants.js";
 import { useAuth } from "./AuthContext.jsx";
@@ -7,6 +7,7 @@ const POLL_INTERVAL = 20 * 1000; // Poll every 20 seconds
 
 const NotificationContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);
   const { user } = useAuth();

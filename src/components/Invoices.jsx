@@ -41,6 +41,7 @@ function Invoices() {
       setLoading(false);
     };
     getInvoices();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -78,11 +79,10 @@ function Invoices() {
                     <Col>
                       <p className="fs-4">Invoice created</p>
                       <p className="fw-light">
-                        {new Date(invoice.createdAt + "UTC").toLocaleString(
-                          [],
-                          { dateStyle: "short", timeStyle: "short" },
-                          "en-US"
-                        )}
+                        {new Date(invoice.createdAt).toLocaleString("en-US", {
+                          dateStyle: "short",
+                          timeStyle: "short",
+                        })}
                       </p>
                     </Col>
                     <Col className="fs-4 fw-bold">${invoice.amount}</Col>
@@ -93,14 +93,17 @@ function Invoices() {
                     >
                       {invoice.paid ? (
                         <img
-                        src={checkmark} className="checkmark"
-                        alt="checkmark"
-                        style={{width: '50px', height: '50px'}}
+                          src={checkmark}
+                          className="checkmark"
+                          alt="checkmark"
+                          style={{ width: "50px", height: "50px" }}
                         />
                       ) : (
                         <div>
                           <p>unpaid</p>
-                          <p><i>click to pay</i></p>
+                          <p>
+                            <i>click to pay</i>
+                          </p>
                         </div>
                       )}
                     </Col>
@@ -116,10 +119,7 @@ function Invoices() {
         </ListGroup>
         <Row>
           <Col>
-            <Button
-            className = "mb-4"
-            onClick = {() => navigate("/dashboard")}
-            >
+            <Button className="mb-4" onClick={() => navigate("/dashboard")}>
               Back to Dashboard
             </Button>
           </Col>

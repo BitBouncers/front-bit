@@ -28,7 +28,7 @@ function ImageUpload() {
   const [uploading, setUploading] = React.useState(false);
   const { user } = useAuth();
 
-  const [selectedRadiologist, setSelectedRadiologist] = React.useState(null);
+  const [selectedRadiologist, setSelectedRadiologist] = React.useState(undefined);
   const [radiologists, setRadiologists] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const handleChange = (e) => {

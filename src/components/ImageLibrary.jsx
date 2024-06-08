@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Banner from "./Banner";
 import WebFooter from "./WebFooter";
 import { Link, useNavigate } from "react-router-dom";
@@ -33,6 +33,7 @@ export default function ImageLibrary() {
         .catch((err) => console.error("Error fetching data: ", err));
     };
     fetchImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleClick(image) {
@@ -60,7 +61,6 @@ export default function ImageLibrary() {
   };
   const imageStyle = {
     minWidth: "200px",
-    maxWidth: "100%",
     height: "auto",
     maxHeight: "200px",
     maxWidth: "200px",
@@ -105,11 +105,10 @@ export default function ImageLibrary() {
                 </p>
                 <p style={{ marginBottom: "0" }}>
                   Upload Date:{" "}
-                  {new Date(image.createdAt + "UTC").toLocaleString(
-                    [],
-                    { dateStyle: "short", timeStyle: "short" },
-                    "en-US"
-                  )}
+                  {new Date(image.createdAt).toLocaleString("en-US", {
+                    dateStyle: "short",
+                    timeStyle: "short",
+                  })}
                 </p>
               </Col>
               <Col xs="auto">
