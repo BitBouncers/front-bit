@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Form, Row, Spinner } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -98,7 +98,7 @@ export default function ImageView() {
     event.preventDefault();
     setSubmitting(true);
     fetch(`${API_URL}/api/image/${image.uid}`, {
-      method: "PUT",
+      method: "PATCH",
       body: JSON.stringify({
         note: newNote,
       }),
@@ -267,7 +267,7 @@ export default function ImageView() {
         {state.image.name ||
           state.image.first_name + " " + state.image.last_name ||
           user.displayName}
-        's Medical Images
+        &apos;s Medical Images
       </h2>
 
       <div style={containerStyle}>
@@ -331,7 +331,7 @@ export default function ImageView() {
             </button>
           </div>
           {showOpinions &&
-            (image.authors && image.authors.length > 1 ? (
+            (image.authors && image.authors.length > 0 ? (
               image.authors.map((author) => {
                 if (author.role === "RADIOLOGIST") {
                   opinionCount++;
