@@ -121,7 +121,10 @@ function Notifications() {
                   </div>
                   <div className="d-flex align-items-center">
                     <small className="text-muted me-5 mb-5">
-                      {notification.createdAt}
+                        {new Date(notification.createdAt).toLocaleString("en-US", {
+                          dateStyle: "short",
+                          timeStyle: "short",
+                        })}
                     </small>
                     <Badge
                       // eslint-disable-next-line no-extra-boolean-cast
