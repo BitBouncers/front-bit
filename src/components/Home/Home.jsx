@@ -18,7 +18,7 @@ function Home() {
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
       const data = await response.json();
       setRadiologists(data.radiologists);
@@ -37,7 +37,7 @@ function Home() {
               </h1>
               <p>
                 We provide a variety selection of radiologists for you to choose
-                from. <br /> View your physician's notes and get a second
+                from. <br /> View your physician&apos;s notes and get a second
                 opinion.
               </p>
               <Link to="/signup" className="btn btn-primary signup">
@@ -89,6 +89,8 @@ function Home() {
                           maxWidth: "100px",
                           minHeight: "100px",
                           maxHeight: "100px",
+                          objectFit: "cover",
+                          objectPosition: "center",
                         }}
                       />
                     </Col>
